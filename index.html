@@ -65,24 +65,25 @@
     function generateLink() {
       var linkContainer = document.getElementById('link-container');
       var link = document.createElement('a');
-      var image = document.createElement('img');
-
+      var video = document.createElement('video'); // เปลี่ยนจาก img เป็น video
+    
       if (isFacebookApp() && isIOS()) {
-        // If opened from Facebook's in-app browser on iOS
-        link.href = 'x-safari-https://script.google.com/a/macros/tu.ac.th/s/AKfycbziPV0OMSEkxbMf6sGpLOmNMX80yRXR4dgHnbpEK3MJU5oI2otLf9IddXffouEUnqgVrg/exec?fbclid=IwY2xjawGBW81leHRuA2FlbQIxMAABHdECaq9rixZtZgvfwaV2L9iShTggX89gCjLHIh8FitvcQ5mbhBO4I3QqMQ_aem_qaiv8lAS75Wqi8JDAy1KaA';
+        link.href = 'x-safari-https://script.google.com/a/macros/tu.ac.th/s/AKfycbztShYHEZVpa81hyVaG7hbun8tLzVNJW0A5KPBaMT3tJZv8yWjwGZF1v5-u2XUZeaAynw/exec?fbclid=IwY2xjawGBW81leHRuA2FlbQIxMAABHdECaq9rixZtZgvfwaV2L9iShTggX89gCjLHIh8FitvcQ5mbhBO4I3QqMQ_aem_qaiv8lAS75Wqi8JDAy1KaA';
       } else {
-        // For all other browsers/platforms
-        link.href = 'https://script.google.com/a/macros/tu.ac.th/s/AKfycbziPV0OMSEkxbMf6sGpLOmNMX80yRXR4dgHnbpEK3MJU5oI2otLf9IddXffouEUnqgVrg/exec?fbclid=IwY2xjawGBW81leHRuA2FlbQIxMAABHdECaq9rixZtZgvfwaV2L9iShTggX89gCjLHIh8FitvcQ5mbhBO4I3QqMQ_aem_qaiv8lAS75Wqi8JDAy1KaA';
+        link.href = 'https://script.google.com/a/macros/tu.ac.th/s/AKfycbztShYHEZVpa81hyVaG7hbun8tLzVNJW0A5KPBaMT3tJZv8yWjwGZF1v5-u2XUZeaAynw/exec?fbclid=IwY2xjawGBW81leHRuA2FlbQIxMAABHdECaq9rixZtZgvfwaV2L9iShTggX89gCjLHIh8FitvcQ5mbhBO4I3QqMQ_aem_qaiv8lAS75Wqi8JDAy1KaA';
       }
-
-      // Set the image source to the GIF in the same GitHub repository
-      image.src = './jc-reunion2024-click.gif';  // Use relative path to the GIF file
-      image.alt = 'Click to open';
-      image.className = 'responsive-image';  // Add the responsive class to the image
-
-      link.target = '_blank';  // Open the link in a new tab/window
-      link.appendChild(image);  // Add the image to the link
-      linkContainer.appendChild(link);  // Add the link to the container
+    
+      // เซ็ตค่า video
+      video.src = './saraba1.mp4'; // ใช้ mp4
+      video.className = 'responsive-image';
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true; // เพื่อให้เล่นบนมือถือ iOS ได้
+    
+      link.target = '_blank'; 
+      link.appendChild(video); 
+      linkContainer.appendChild(link);
     }
 
     // Run the function to generate the correct link
